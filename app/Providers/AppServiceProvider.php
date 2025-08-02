@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Services\NotificationService::class, function ($app) {
             return new \App\Services\NotificationService();
         });
+
+        // Register singleton for UserActivityStatsService
+        $this->app->singleton(\App\Services\UserActivityStatsService::class, function ($app) {
+            return new \App\Services\UserActivityStatsService();
+        });
     }
 
     /**

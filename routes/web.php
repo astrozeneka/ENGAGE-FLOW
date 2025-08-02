@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Log;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // redirect to /signup
+    return redirect('/signup');
 });
 
 Route::get('/auth/google/callback', function (Request $request) {
