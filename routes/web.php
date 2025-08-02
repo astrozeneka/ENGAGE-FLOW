@@ -2,7 +2,7 @@
 
 use Google\Service\Docs\Request;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +26,12 @@ Route::get('/auth/google/callback', function (Request $request) {
     ]);
 });
 
+
+Route::get('/signup', function () {
+    Log::info("Accessing Angular application route");
+    return view('angular');
+});
+Route::get('/dashboard', function () {
+    Log::info("Accessing Angular application route");
+    return view('angular');
+});
