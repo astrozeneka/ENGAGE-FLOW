@@ -32,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Services\UserActivityStatsService::class, function ($app) {
             return new \App\Services\UserActivityStatsService();
         });
+
+        // Register singleton for RemoteEntitlementDataService
+        $this->app->singleton(\App\Services\RemoteEntitlementDataService::class, function ($app) {
+            return new \App\Services\RemoteEntitlementDataService();
+        });
     }
 
     /**

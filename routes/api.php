@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DataController;
+use App\Http\Controllers\EntitlementController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,9 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/data/full-data', [App\Http\Controllers\DataController::class, 'getFullData']);
-Route::get('/data/user-list', [App\Http\Controllers\DataController::class, 'getUserList']);
+Route::get('/data/full-data', [DataController::class, 'getFullData']);
+Route::get('/data/user-list', [DataController::class, 'getUserList']);
 Route::post('/push-notification/trigger', [App\Http\Controllers\PushNotificationController::class, 'triggerNotification']);
+
+// Used for fetching entitlements
+Route::get('/entitlements', [DataController::class, 'getUserEntitlements']);
 
 // Update later
 Route::get('/test-payment', function(Request $request) {

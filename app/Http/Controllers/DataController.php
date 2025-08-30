@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\RemoteModel\MobileAppUser;
 use App\Services\RemoteDataService;
 use App\Services\UserActivityStatsService;
+use App\Services\RemoteEntitlementDataService;
+use Illuminate\Support\Facades\Log;
 
 class DataController extends Controller
 {
@@ -29,5 +31,17 @@ class DataController extends Controller
         // For later
 
         return response()->json($users, 200);
+    }
+
+    public function getUserEntitlements(Request $request)
+    {
+        Log::info($request->all());
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+
+        $entitlements = app(RemoteEntitlementDataService::class)->fetchData($request->input('user_id'));
+
+        return response()->json($entitlements, 200);
     }
 }
